@@ -4,6 +4,8 @@
   box-sizing: border-box;
   list-style-type: none;
   user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  tap-highlight-color:transparent;
 }
 
 .App {
@@ -12,9 +14,4 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }

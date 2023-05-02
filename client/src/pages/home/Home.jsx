@@ -1,4 +1,5 @@
 import { Leftbar, Middle, Rightbar } from "../../components";
+
 import MobileMenu from "../../components/mobileComp/MobileMenu";
 import MobileTop from "../../components/mobileComp/MobileTop";
 

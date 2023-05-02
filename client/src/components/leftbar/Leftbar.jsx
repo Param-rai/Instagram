@@ -12,12 +12,13 @@ import {
 import { Link, useLocation, useParams } from "react-router-dom";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
+import CreateModel from "../createModel/CreateModel";
 
 const More = ({ more, setMore }) => {
   return (
     <div
       className={`more__content absolute flex-col justify-around bottom-0 transition-all duration-300 ease-in-out bg-white p-2  ${
-        more ? "flex h-[500px]" : "h-[0]"
+        more ? "flex h-[550px]" : "h-[0]"
       }`}
     >
       <Link
@@ -109,16 +110,13 @@ const Search = ({ search, notification }) => {
   );
 };
 
-const createModal = () => {
-  return <></>;
-};
-
 const Leftbar = () => {
   const [more, setMore] = useState(false);
   const [search, setSearch] = useState(false);
   const [notification, setNotification] = useState(false);
   let location = useLocation();
   const { username } = useParams();
+  const [create, setCreate] = useState(false);
 
   return (
     <div
@@ -269,6 +267,9 @@ const Leftbar = () => {
         </span>
 
         <span
+          onClick={() => {
+            setCreate((prev) => !prev);
+          }}
           className={`group text-lg flex gap-4 items-center  p-3  rounded-md hover:bg-gray-200 transition-all duration-200 ease-linear cursor-pointer ${
             notification || search ? "w-[max-content]" : "w-[90%]"
           } ${location.pathname === "/create" && "font-bold"}`}
@@ -333,6 +334,7 @@ const Leftbar = () => {
           ""
         )}
       </nav>
+      {create && <CreateModel setCreate={setCreate} />}
     </div>
   );
 };

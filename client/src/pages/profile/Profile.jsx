@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Leftbar } from "../../components";
 import {
-  AiOutlineInstagram,
   AiOutlinePlus,
   AiOutlineTag,
   BiComment,
+  BiMoviePlay,
   FiHeart,
   FiSettings,
 } from "../../icons";
@@ -12,6 +12,29 @@ import MobileTop from "../../components/mobileComp/MobileTop";
 import MobileMenu from "../../components/mobileComp/MobileMenu";
 import Footer from "../../components/footer/Footer";
 import { Link } from "react-router-dom";
+import { BsGrid } from "react-icons/bs";
+
+const saveIcon = (
+  <svg
+    aria-label="Save"
+    color="rgb(0, 0, 0)"
+    fill="rgb(0, 0, 0)"
+    height="15"
+    role="img"
+    viewBox="0 0 24 24"
+    width="15"
+  >
+    <title>Save</title>
+    <polygon
+      fill="none"
+      points="20 21 12 13.44 4 21 4 3 20 3 20 21"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+    ></polygon>
+  </svg>
+);
 
 const Highlight = ({ preview, text }) => {
   return (
@@ -36,14 +59,14 @@ export const Post = () => {
   return (
     <Link
       to="/p/lj834njfen"
-      className="group bg-gray-200 relative block cursor-pointer"
+      className="group bg-gray-200 relative block cursor-pointer w-full aspect-square overflow-hidden"
     >
       <img
         src="https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg?auto=compress&cs=tinysrgb&w=600"
         alt=""
-        className="group"
+        className="group object-cover"
       />
-      <div className="mask bg-black/40 absolute top-0 left-0 w-full h-full hidden group-hover:flex justify-center items-center gap-4 transition-all ease-in-out duration-400 z-40 text-white">
+      <div className="mask bg-black/40 absolute top-0 left-0 w-full h-full hidden group-hover:flex justify-center items-center gap-4 transition-all ease-in-out duration-400 z-30 text-white">
         <div className="like flex items-center gap-2">
           <i>
             <FiHeart className="text-xl fill-white" />
@@ -65,7 +88,7 @@ const Posts = () => {
   const [tab, setTab] = useState("post");
 
   return (
-    <div className="border-y border-t-gray-300 mt-8">
+    <div className="border-y border-t-gray-300 mt-8 pb-2">
       <div className="menu flex justify-center gap-6">
         <span
           className={`flex justify-center items-center gap-2 px-4 py-4 cursor-pointer border-t-2  ${
@@ -74,9 +97,20 @@ const Posts = () => {
           onClick={() => setTab("post")}
         >
           <i className="text-lg">
-            <AiOutlineInstagram />
+            <BsGrid />
           </i>
           <span className="hidden sm:block">Posts</span>
+        </span>
+        <span
+          className={`flex justify-center items-center gap-2 px-4 py-4 cursor-pointer border-t-2  ${
+            tab === "reel" ? "border-gray-800 font-bold" : "border-gray-800/0"
+          }`}
+          onClick={() => setTab("reel")}
+        >
+          <i className="text-lg">
+            <BiMoviePlay />
+          </i>
+          <span className="hidden sm:block">Reels</span>
         </span>
         <span
           className={`flex justify-center items-center gap-2 px-4 py-4 cursor-pointer border-t-2  ${
@@ -84,9 +118,7 @@ const Posts = () => {
           }`}
           onClick={() => setTab("saved")}
         >
-          <i className="text-lg">
-            <AiOutlineTag />
-          </i>
+          <i className="text-sm">{saveIcon}</i>
           <span className="hidden sm:block">Saved</span>
         </span>
         <span
@@ -101,7 +133,7 @@ const Posts = () => {
           <span className="hidden sm:block">Tagged</span>
         </span>
       </div>
-      <div className="post__container grid grid-cols-3 gap-[.5rem] px-1">
+      <div className="post__container grid grid-cols-3 gap-[.3rem]">
         <Post />
         <Post />
         <Post />
@@ -124,9 +156,9 @@ const Profile = () => {
       <MobileTop />
       <Leftbar />
 
-      <div className="profile__wrapper w-full max-w-[1030px] px-2 mx-auto">
+      <div className="profile__wrapper w-full max-w-[1030px] mx-auto">
         <div className="upper flex items-center gap-10 py-8 ">
-          <div className="profile__pic bg-gray-300 rounded-full min-h-[60px] min-w-[60px] sm:min-h-[90px] sm:min-w-[90px] lg:min-h-[120px] lg:min-w-[120px] ml-2">
+          <div className="profile__pic bg-gray-300 rounded-full min-h-[80px] min-w-[80px] sm:min-h-[90px] sm:min-w-[90px] lg:min-h-[120px] lg:min-w-[120px] ml-2">
             <img src="" alt="" />
           </div>
           <div className="profile__info flex items-start flex-col gap-2  w-[max-content]">

@@ -38,8 +38,7 @@ import { RxHamburgerMenu, RxMoon } from "react-icons/rx";
 
 const saveIcon = (
   <svg
-    aria-label="Save"
-    class="x1lliihq x1n2onr6 cursor-pointer"
+    ariaLabel="Save"
     color="rgb(0, 0, 0)"
     fill="rgb(0, 0, 0)"
     height="24"
@@ -52,17 +51,16 @@ const saveIcon = (
       fill="none"
       points="20 21 12 13.44 4 21 4 3 20 3 20 21"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
     ></polygon>
   </svg>
 );
 
 const saved = (
   <svg
-    aria-label="Remove"
-    class="x1lliihq x1n2onr6"
+    ariaLabel="Saved"
     color="rgb(0, 0, 0)"
     fill="rgb(0, 0, 0)"
     height="24"

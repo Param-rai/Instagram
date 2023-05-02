@@ -10,14 +10,16 @@ import { FiHeart, FiPlusSquare, FiSettings } from "../../icons";
 import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import CreateModel from "../createModel/CreateModel";
 
 const MobileTop = () => {
   const location = useLocation();
   const [option, setOption] = useState(false);
   const { username, postId } = useParams();
+  const [create, setCreate] = useState(false);
 
   return (
-    <div className="flex sm:hidden bg-white z-50 fixed top-0 left-0 justify-between p-2 w-full border-y border-gray-100 h-12">
+    <div className="flex sm:hidden bg-white z-40 fixed top-0 left-0 justify-between p-2 w-full border-y border-gray-100 h-12">
       {location.pathname === "/explore" && (
         <div className="relative searchBox flex justify-end items-center border border-slate-400 rounded-md w-[90%] m-auto">
           <BiSearch
@@ -67,7 +69,12 @@ const MobileTop = () => {
             </div>
           </div>
           <div className="flex text-xl gap-3 p-2">
-            <FiPlusSquare />
+            <FiPlusSquare
+              className="cursor-pointer"
+              onClick={() => {
+                setCreate((prev) => !prev);
+              }}
+            />
             <FiHeart />
           </div>
         </>
@@ -122,6 +129,10 @@ const MobileTop = () => {
           <span className="flex items-center">Comments</span>
           <span></span>
         </div>
+      )}
+
+      {create && location.pathname === "/" && (
+        <CreateModel setCreate={setCreate} />
       )}
     </div>
   );

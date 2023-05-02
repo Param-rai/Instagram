@@ -15,7 +15,7 @@ const Suggestion = () => {
 
 const Rightbar = () => {
   return (
-    <div className="flex-2 min-w-[25%] pt-12 hidden md:block pr-2">
+    <div className="flex-2 min-w-[25%] pt-12 hidden md:block pr-2 mx-auto">
       <div className="wrapper">
         <div className="profile flex gap-4 items-center">
           <div className="profile__pic min-h-[60px] min-w-[60px] bg-gray-200 rounded-full"></div>

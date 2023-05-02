@@ -23,7 +23,7 @@ const CommentPage = () => {
   return (
     <div className="mt-12">
       <MobileTop />
-      <div className="fixed top-12 flex items-center gap-3 bg-neutral-200 w-[100vw] h-[4rem] px-4">
+      <div className="fixed top-12 flex items-center gap-3 bg-neutral-100 w-[100vw] h-[4rem] px-4">
         <img
           src="https://images.pexels.com/photos/1366630/pexels-photo-1366630.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt=""

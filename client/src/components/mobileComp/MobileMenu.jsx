@@ -9,10 +9,10 @@ const MobileMenu = () => {
   let location = useLocation();
 
   return (
-    <div className="fixed flex sm:hidden justify-between p-2 bottom-0 left-0 h-[max-content] w-full bg-white rounded-md shadow-xl border-t border-gray-200 ">
+    <div className="fixed flex sm:hidden items-center justify-around min-h-[3.4rem] bottom-0 left-0 w-full bg-white rounded-md shadow-xl border-t border-gray-200 z-40">
       <Link to="/">
         <GrHomeRounded
-          className="text-[1.60rem] font-bold group-hover:scale-110 transition-all duration-300 ease-in-out"
+          className="text-[1.50rem] font-bold group-hover:scale-110 transition-all duration-300 ease-in-out"
           style={{ fill: `${location.pathname === "/" ? "black" : ""}` }}
         />
       </Link>
