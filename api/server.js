@@ -1,14 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
 import authRoute from "./routes/authRoute.js";
+import dotenv from "dotenv";
 import postRoute from "./routes/postRoute.js";
-import userRoute from "./routes/userRoute.js";
+// import userRoute from "./routes/userRoute.js";
 
+dotenv.config();
 const app = express();
-const URL = process.env.URL;
+const URI = process.env.MONGODBURI;
 
 mongoose
-  .connect(URL)
+  .connect(URI)
   .then(() => {
     console.log("MongoDb is connected");
     app.listen(5000, () => {
@@ -25,4 +27,4 @@ app.use(express.json());
 // Routes
 app.use("/auth", authRoute);
 app.use("/post", postRoute);
-app.use("/user", userRoute);
+// app.use("/user", userRoute);
