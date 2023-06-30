@@ -292,7 +292,11 @@ const Leftbar = () => {
             notification || search ? "w-[max-content]" : "w-[90%]"
           } ${location.pathname === `/profile/${username}` && "font-bold"}`}
         >
-          <CgProfile className="text-[1.75rem] font-bold group-hover:scale-110 transition-all duration-300 ease-in-out" />
+          <img
+            src="/img/avatar.png"
+            alt=""
+            className="max-w-[28px] max-h-[28px]"
+          />
           {!search ? (
             notification ? (
               ""

@@ -8,12 +8,16 @@ import {
 } from "../../icons";
 import { Link } from "react-router-dom";
 
-export const Post = () => {
+export const Post = ({ postImg }) => {
   return (
     <div className="post">
       <div className="post__upper flex gap-4 align-middle items-center px-2">
         <div className="profile__pic min-h-[40px] min-w-[40px] bg-gray-200 rounded-full">
-          <img src="" alt="" />
+          <img
+            src="/img/avatar.png"
+            alt=""
+            className="min-h-[40px] min-w-[40px] max-h-[40px] max-w-[40px] object-cover"
+          />
         </div>
         <div className="profile__data flex flex-col w-full">
           <div className="post__profile__username">
@@ -28,8 +32,8 @@ export const Post = () => {
           <FiMoreHorizontal />
         </div>
       </div>
-      <div className="post__image min-h-[400px] min-w-full bg-gray-200 my-4">
-        <img src="" alt="" />
+      <div className="post__image bg-gray-200 my-4">
+        <img src={postImg} alt="" className="min-h-full min-w-full" />
       </div>
       <div className="post__actions flex justify-between px-2">
         <div className="icons flex text-2xl gap-4">
@@ -65,11 +69,18 @@ export const Post = () => {
 };
 
 const Posts = () => {
+  const postImages = [
+    "https://edge.mwallpapers.com/photos/celebrities/prabhas/prabhas-hd-photos-wallpapers-1080p-cru0nl.jpg",
+    "https://media5.bollywoodhungama.in/wp-content/uploads/2016/03/Shah-Rukh-Khan.jpg",
+    "https://edge.mwallpapers.com/photos/celebrities/prabhas/md/prabhashd-wallpapers-desktop-background-android-iphone-1080p-4k-ans5f.jpg",
+    "https://edge.mwallpapers.com/photos/celebrities/prabhas/prabhashd-wallpapers-desktop-background-android-iphone-1080p-4k-rtdwo.jpg",
+  ];
+
   return (
     <div className="flex flex-col gap-8 justify-center max-w-lg m-auto">
-      <Post />
-      <Post />
-      <Post />
+      {postImages.map((img, i) => {
+        return <Post key={i} postImg={img} />;
+      })}
 
       <div className="w-full text-center mt-4 mb-8 text-gray-500">
         "That all for now Thanks..."

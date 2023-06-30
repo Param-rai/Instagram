@@ -159,7 +159,11 @@ const Profile = () => {
       <div className="profile__wrapper w-full max-w-[1030px] mx-auto">
         <div className="upper flex items-center gap-10 py-8 ">
           <div className="profile__pic bg-gray-300 rounded-full min-h-[80px] min-w-[80px] sm:min-h-[90px] sm:min-w-[90px] lg:min-h-[120px] lg:min-w-[120px] ml-2">
-            <img src="" alt="" />
+            <img
+              src="/img/avatar.png"
+              alt=""
+              className="max-w-[80px] max-h-[80px]"
+            />
           </div>
           <div className="profile__info flex items-start flex-col gap-2  w-[max-content]">
             <div className="info-set-1 flex flex-wrap gap-2 items-center justify-start w-full">

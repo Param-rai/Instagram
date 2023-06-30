@@ -1,7 +1,13 @@
 const Suggestion = () => {
   return (
     <div className="flex gap-4">
-      <div className="profile__pic min-h-[50px] min-w-[50px] bg-gray-200 rounded-full"></div>
+      <div className="profile__pic min-h-[50px] min-w-[50px] bg-gray-200 rounded-full">
+        <img
+          src="/img/avatar.png"
+          alt=""
+          className="max-h-[50px] max-w-[50px]"
+        />
+      </div>
       <div className="profile__name flex flex-col w-full justify-center">
         <span className="text-sm">
           <b>Vicky_kaushal09</b>
@@ -18,7 +24,13 @@ const Rightbar = () => {
     <div className="flex-2 min-w-[25%] pt-12 hidden md:block pr-2 mx-auto">
       <div className="wrapper">
         <div className="profile flex gap-4 items-center">
-          <div className="profile__pic min-h-[60px] min-w-[60px] bg-gray-200 rounded-full"></div>
+          <div className="profile__pic min-h-[60px] min-w-[60px] bg-gray-200 rounded-full">
+            <img
+              src="/img/avatar.png"
+              alt=""
+              className="max-h-[60px] max-w-[60px]"
+            />
+          </div>
           <div className="profile__name flex flex-col w-full justify-center">
             <span>
               <b>paramraii</b>

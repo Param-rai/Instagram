@@ -15,7 +15,7 @@ const Story = ({ username, stories, isSeen, currentPerson }) => {
       className="story flex flex-col justify-center items-center gap-2 relative px-2 cursor-pointer"
     >
       <img
-        src=""
+        src={stories[currentPerson].stories[0]}
         alt=""
         className="w-[50px] h-[50px]  bg-gray-300  rounded-full"
       />
