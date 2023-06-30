@@ -4,9 +4,35 @@ import { Link } from "react-router-dom";
 
 const Auth = () => {
   const [variant, setVariant] = useState("login");
+  const [formData, setFormData] = useState(null);
+
   variant === "signup"
     ? (document.title = `Sign Up - Instagram`)
     : (document.title = `Instagram`);
+
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const url =
+      variant === "signup"
+        ? "http://localhost:5000/auth/register"
+        : "http://localhost:5000/auth/login";
+
+    fetch(url, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((data) => data.json())
+      .then((data) => console.log(data));
+  }
 
   return (
     <div
@@ -42,7 +68,7 @@ const Auth = () => {
 
           {variant === "signup" && (
             <>
-              <button className="font-bold bg-blue-500 text-white font-semibold cursor-pointer w-[85%] rounded-md py-2">
+              <button className="bg-blue-500 text-white font-semibold cursor-pointer w-[85%] rounded-md py-2">
                 Log in with Facebook
               </button>
               <div className="or__line flex items-center gap-2 text-gray-600">
@@ -57,18 +83,22 @@ const Auth = () => {
             <input
               type="text"
               name="phoneEmailOrUsername"
-              value={""}
+              value={formData?.phoneEmaillOrUsername}
+              onChange={handleChange}
               placeholder={`Phone number ${
-                variant === "login" && ", username"
-              } or email address`}
+                variant === "login" ? ", username" : ""
+              } or email address `}
+              required
               className="placeholder:text-slate-500 placeholder:text-[13px] focus:outline-none border border-gray-300 focus:border-gray-500 rounded-sm py-2 px-2 w-full"
             />
             {variant === "signup" && (
               <input
                 type="text"
                 name="fullname"
-                value={""}
-                placeholder="Full name"
+                value={formData?.fullname}
+                onChange={handleChange}
+                placeholder="Fullname"
+                required
                 className="placeholder:text-slate-500 placeholder:text-[13px] focus:outline-none border border-gray-300 focus:border-gray-500 rounded-sm py-2 px-2 w-full"
               />
             )}
@@ -76,20 +106,27 @@ const Auth = () => {
               <input
                 type="text"
                 name="username"
-                value={""}
+                value={formData?.username}
+                onChange={handleChange}
                 placeholder="username"
+                required
                 className="placeholder:text-slate-500 placeholder:text-[13px] focus:outline-none border border-gray-300 focus:border-gray-500 rounded-sm py-2 px-2 w-full"
               />
             )}
             <input
               type="password"
               name="password"
-              value={""}
+              value={formData?.password}
+              onChange={handleChange}
               placeholder="Password"
+              required
               className="placeholder:text-slate-500 placeholder:text-[13px] focus:outline-none border border-gray-300 focus:border-gray-500 rounded-sm py-2 px-2 w-full"
             />
 
-            <button className="bg-blue-500 p-2 rounded-lg text-white font-bold">
+            <button
+              className="bg-blue-500 p-2 rounded-lg text-white font-bold"
+              onClick={handleSubmit}
+            >
               {variant === "signup" ? "Sign up" : "Log in"}
             </button>
             <button className="bg-blue-500 p-2 rounded-lg text-white font-bold">
@@ -145,9 +182,9 @@ const Auth = () => {
               : "Already Have an account ?"}
             <span
               className="font-bold text-blue-400 cursor-pointer"
-              onClick={() =>
-                setVariant(variant === "signup" ? "login" : "signup")
-              }
+              onClick={() => {
+                setVariant(variant === "signup" ? "login" : "signup");
+              }}
             >
               {variant === "login" ? " Sign up" : " Log in"}
             </span>

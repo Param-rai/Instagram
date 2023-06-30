@@ -4,6 +4,7 @@ import authRoute from "./routes/authRoute.js";
 import dotenv from "dotenv";
 import postRoute from "./routes/postRoute.js";
 import userRoute from "./routes/userRoute.js";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,7 @@ mongoose
 
 //middlewares
 app.use(express.json());
+app.use(cors());
 
 // Routes
 app.use("/auth", authRoute);

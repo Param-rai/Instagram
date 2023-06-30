@@ -40,7 +40,7 @@ function Reel() {
   const [more, setMore] = useState(false);
 
   return (
-    <div className="snap-start w-full sm:max-w-[410px] min-h-[calc(100vh-3.4rem)] sm:min-h-[100%] flex justify-center items-center mx-auto relative bg-black overflow-hidden">
+    <div className="snap-start w-full min-w-[100vw] sm:min-w-[410px] sm:max-w-[410px] min-h-[100vh] flex justify-center items-center mx-auto relative bg-black overflow-hidden">
       <video
         ref={videoRef}
         src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
@@ -48,7 +48,7 @@ function Reel() {
         style={{ aspectRatio: "9/16" }}
         loop
       ></video>
-      <div className="actions flex flex-col items-center justify-center gap-6 absolute right-0 bottom-[5rem] z-10 p-2 text-white">
+      <div className="actions flex flex-col items-center justify-center gap-6 absolute right-0 bottom-[8rem] sm:bottom-[5rem] z-10 p-2 text-white">
         <span className="flex flex-col items-center justify-center gap-1 cursor-pointer">
           <FiHeart className="text-[1.8rem]" />
           44k
@@ -66,7 +66,7 @@ function Reel() {
           <span></span>
         </span>
       </div>
-      <div className="flex flex-col gap-1 absolute left-0 bottom-0 user text-white p-2 w-full">
+      <div className="user flex flex-col gap-1 absolute left-0 bottom-[3.5rem] sm:bottom-0 p-2 text-white w-full">
         <div className="flex gap-2 items-center">
           <img
             src=""
@@ -80,7 +80,7 @@ function Reel() {
         </div>
         <div className="desc flex gap-2 items-end">
           <p
-            className={`flex text-white w-[300px] transition-all duration-400 ease-in-out ${
+            className={`flex text-white max-w-[240px] transition-all duration-400 ease-in-out ${
               !more
                 ? "truncate h-[24px]"
                 : "h-[200px] overflow-y-auto scrollbar-hide"

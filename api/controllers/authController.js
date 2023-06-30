@@ -2,20 +2,59 @@ import User from "../models/userSchema.js";
 import bcrypt from "bcrypt";
 
 export const register = async (req, res) => {
-  const { username, fullname, email, password, phoneNumber } = req.body;
+  const { phoneEmailOrUsername, username, fullname, password } = req.body;
+
   try {
     //hash the pass
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
 
+    //check if  username is already registed
+    const exist = await User.findOne({ username });
+    if (exist)
+      return res
+        .status(403)
+        .json(
+          "Sorry this Username already exist try to adding number after name or underscore"
+        );
+
     //create new User and save
     const user = await User.create({
       username,
       fullname,
-      email,
-      phoneNumber,
       password: hashPassword,
     });
+
+    // check user registered either with phone or email
+    const isNumber = /^\d{10}$/.test(phoneEmailOrUsername);
+    if (isNumber) {
+      // check if the number already registered
+      const exist = await User.findOne({ phoneNumber: phoneEmailOrUsername });
+      if (exist) {
+        return res.status(403).json("Sorry this phoneNumber already exist");
+      } else {
+        // adding number
+        user["phoneNumber"] = phoneEmailOrUsername;
+      }
+    }
+    if (!isNumber) {
+      //validate email by regex
+      const valid = /^[\w.+\-]+@gmail\.com$/.test(phoneEmailOrUsername);
+
+      if (valid) {
+        // check if email already exist
+        const exist = await User.findOne({ email: phoneEmailOrUsername });
+        if (exist) {
+          return res.status(403).json("Sorry this email already exist");
+        } else {
+          // adding email
+          user["email"] = phoneEmailOrUsername;
+        }
+      } else {
+        //if not valid phoneNum or Email
+        return res.status(403).json("Please enter valid email or number");
+      }
+    }
 
     await user.save();
     //send new user created back

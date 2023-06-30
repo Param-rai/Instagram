@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { FiHeart, FiMoreHorizontal, FiSend } from "react-icons/fi";
 import { HiOutlineVolumeOff, HiOutlineVolumeUp } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Story = ({ story }) => {
   const { stories, currentPerson } = useLocation().state;
+
   const [index, setIndex] = useState(0);
+  const navigate = useNavigate();
 
   let person = currentPerson;
 
@@ -35,7 +37,7 @@ const Story = ({ story }) => {
         if (width >= 100) {
           // stopping progress
           clearInterval(id);
-          //changin bar and changing to zero when completed all bars
+          //changing bar and changing to zero when completed all bars
           setIndex(index + 1);
           if (index === bars.length) setIndex(0);
 
@@ -51,7 +53,7 @@ const Story = ({ story }) => {
             bars[bars.length - 1].offsetWidth >=
             personContainer.offsetWidth / bars.length - 10
           ) {
-            window.history.back();
+            navigate("/");
           }
         }
       }

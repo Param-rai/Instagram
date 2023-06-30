@@ -1,24 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MobileTop from "../../components/mobileComp/MobileTop";
 import MobileMenu from "../../components/mobileComp/MobileMenu";
 import { Comment, UserDescAsComment } from "../postPage/PostPage";
-import { useNavigate } from "react-router-dom";
 
 const CommentPage = () => {
   const [comment, setComment] = useState("");
-  const [screen, setScreen] = useState();
-  const navigate = useNavigate();
-
-  window.scrollTo(0, 0);
-  window.onresize = function () {
-    setScreen(window.screen.width);
-  };
-
-  useEffect(() => {
-    // if screen is big navigate to post page coz it shows both comment and post
-    setScreen(window.screen.width);
-    screen > 640 && navigate(`/p/h848ehfe3`);
-  }, [screen]);
 
   return (
     <div className="mt-12">
