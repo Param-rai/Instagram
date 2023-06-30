@@ -80,7 +80,7 @@ function Reel() {
         </div>
         <div className="desc flex gap-2 items-end">
           <p
-            className={`flex text-white max-w-[240px] transition-all duration-400 ease-in-out ${
+            className={`flex text-white w-[70%] transition-all duration-400 ease-in-out ${
               !more
                 ? "truncate h-[24px]"
                 : "h-[200px] overflow-y-auto scrollbar-hide"
